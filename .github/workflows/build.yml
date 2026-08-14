@@ -18,15 +18,15 @@ jobs:
         run: |
           mkdir -p extracted
           unzip -o RageEditionGeodeMod-AndroidBuild.zip -d extracted
-          find extracted -type f -name CMakeLists.txt -exec dirname {} \; | head -1 > project_dir.txt
-          echo "PROJECT_DIR=$(cat project_dir.txt)" >> $GITHUB_ENV
+          find extracted -type f -name CMakeLists.txt -print -quit | xargs dirname > project_dir.txt
+          echo "PROJECT_DIR=$(cat project_dir.txt)" >> "$GITHUB_ENV"
 
       - name: Build Android64 .geode
         id: build
         uses: geode-sdk/build-geode-mod@main
         with:
           target: Android64
-          sdk: latest
+          sdk: v5.8.2
           cli: latest
           path: ${{ env.PROJECT_DIR }}
 
