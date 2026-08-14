@@ -1,0 +1,19 @@
+{
+  "geode": "v5.8.2",
+  "gd": {
+    "android": "2.2081",
+    "win": "2.2081",
+    "mac": "2.2081",
+    "ios": "2.2081"
+  },
+  "id": "matus.rage-edition",
+  "name": "Rage Edition Menu",
+  "version": "v1.0.0",
+  "developer": "Matus",
+  "description": "A neon Rage Edition makeover for the Geometry Dash main menu.",
+  "resources": {
+    "sprites": [
+      "resources/rage-menu.png"
+    ]
+  }
+}
