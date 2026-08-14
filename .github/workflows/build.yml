@@ -16,21 +16,19 @@ jobs:
 
       - name: Extract mod project
         run: |
+          mkdir -p extracted
           unzip -o RageEditionGeodeMod-AndroidBuild.zip -d extracted
+          find extracted -type f -name CMakeLists.txt -exec dirname {} \; | head -1 > project_dir.txt
+          echo "PROJECT_DIR=$(cat project_dir.txt)" >> $GITHUB_ENV
 
-          
-          find extracted -type f
-          cd extracted/RageEditionGeodeMod
-          echo "PROJECT_DIR=$PWD" >> $GITHUB_ENV
-
-          - name: Build Android64 .geode
+      - name: Build Android64 .geode
         id: build
         uses: geode-sdk/build-geode-mod@main
         with:
           target: Android64
           sdk: latest
           cli: latest
-          path: extracted/RageEditionGeodeMod
+          path: ${{ env.PROJECT_DIR }}
 
       - name: Upload .geode
         uses: actions/upload-artifact@v4
