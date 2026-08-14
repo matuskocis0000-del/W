@@ -16,7 +16,9 @@ jobs:
 
       - name: Extract mod project
         run: |
-          unzip -o RageEditionGeodeMod.zip -d extracted
+          unzip -o RageEditionGeodeMod-AndroidBuild.zip -d extracted
+
+          
           find extracted -type f
           cd extracted/RageEditionGeodeMod
           echo "PROJECT_DIR=$PWD" >> $GITHUB_ENV
